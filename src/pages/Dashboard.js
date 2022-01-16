@@ -17,8 +17,12 @@ const Dashboard = () => {
             accessor: "class"
           },
           {
+            Header: "Total Students Booked",
+            accessor: "totalBooked",
+          },
+          {
             Header: "Total Students Vaccinated",
-            accessor: "total",
+            accessor: "vaccinated",
           }
         ],
         []

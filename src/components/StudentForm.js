@@ -59,7 +59,7 @@ function onContactChangeListener(event) {
  }
 
  function validateClass(data) {
-  const regex = new RegExp('^[0-9]{1,2}$');
+  const regex = new RegExp('^([1-9]|1[0-2])$');
   return regex.test(data);
 }
 
