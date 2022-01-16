@@ -1,0 +1,73 @@
+[{
+        "Event_Id": 1,
+        "Event_Name": "E1",
+        "Vaccine_Name": "C1",
+        "Date": "01/01/22",
+        "Place": "P1",
+        "Max_Slots": 50,
+        "Booked_Slots": 10
+    },
+    {
+        "Event_Id": 2,
+        "Event_Name": "E2",
+        "Vaccine_Name": "C1",
+        "Date": "02/01/22",
+        "Place": "P2",
+        "Max_Slots": 50,
+        "Booked_Slots": 0
+    },
+    {
+        "Event_Id": 3,
+        "Event_Name": "E3",
+        "Vaccine_Name": "C1",
+        "Date": "03/01/22",
+        "Place": "P3",
+        "Max_Slots": 50,
+        "Booked_Slots": 1
+    },
+    {
+        "Event_Id": 4,
+        "Event_Name": "E4",
+        "Vaccine_Name": "C1",
+        "Date": "04/01/22",
+        "Place": "P4",
+        "Max_Slots": 50,
+        "Booked_Slots": 2
+    },
+    {
+        "Event_Id": 5,
+        "Event_Name": "E5",
+        "Vaccine_Name": "C2",
+        "Date": "05/01/23",
+        "Place": "P5",
+        "Max_Slots": 50,
+        "Booked_Slots": 0
+    },
+    {
+        "Event_Id": 6,
+        "Event_Name": "E6",
+        "Vaccine_Name": "C2",
+        "Date": "06/01/22",
+        "Place": "P6",
+        "Max_Slots": 50,
+        "Booked_Slots": 23
+    },
+    {
+        "Event_Id": 7,
+        "Event_Name": "E7",
+        "Vaccine_Name": "C2",
+        "Date": "07/01/23",
+        "Place": "P7",
+        "Max_Slots": 50,
+        "Booked_Slots": 43
+    },
+    {
+        "Event_Id": 8,
+        "Event_Name": "E8",
+        "Vaccine_Name": "C2",
+        "Date": "08/01/23",
+        "Place": "P8",
+        "Max_Slots": 50,
+        "Booked_Slots": 0
+    }
+]

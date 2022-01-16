@@ -1,0 +1,33 @@
+[{
+        "StudentId": 1,
+        "Name": "Aaaa",
+        "Class": 4,
+        "Contact_Number": 1234,
+        "Gender": "M",
+        "DOB": "2000-01-03"
+    },
+    {
+        "StudentId": 2,
+        "Name": "Bbbb",
+        "Class": 5,
+        "Contact_Number": 1234,
+        "Gender": "M",
+        "DOB": "2001-12-05"
+    },
+    {
+        "StudentId": 3,
+        "Name": "Cccc",
+        "Class": 6,
+        "Contact_Number": 1234,
+        "Gender": "F",
+        "DOB": "2000-10-25"
+    },
+    {
+        "StudentId": 4,
+        "Name": "Dddd",
+        "Class": 7,
+        "Contact_Number": 1234,
+        "Gender": "F",
+        "DOB": "1999-09-13"
+    }
+]
