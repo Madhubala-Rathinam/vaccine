@@ -1,14 +1,34 @@
 import { Container,Row, Col, Table } from "reactstrap";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import TableContainer from "../components/TableContainer";
 import UpcomingDriveComponent from "../components/UpcomingDriveComponent";
 
 const studentVaccine = require('../api/totalStudentsVaccinated.json')
 const vaccineDrive = require("../api/vaccineDrive.json")
 
-var filterDrive = vaccineDrive.filter( e => e.Booked_Slots > 0 && Date.parse(e.Date) > Date.now() );
+// var filterDrive = vaccineDrive.filter( e => e.Booked_Slots > 0 && Date.parse(e.Date) > Date.now() );
 
 const Dashboard = () => {
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8082/vaccineDrive/?format=json")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          result = result.filter( e => e.bookedSlots > 0 && Date.parse(e.eventDate) > Date.now() );
+          setItems(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
 
     const columnsVaccine = useMemo(
         () => [
@@ -32,32 +52,32 @@ const Dashboard = () => {
         () => [
             {
                 Header: "Event_Id",
-                accessor: "Event_Id",
+                accessor: "eventId",
                 type: "button"
               },
               {
                 Header: "Event Name",
-                accessor: "Event_Name",
+                accessor: "eventName",
                 type: "text"
               },
               {
                 Header: "Vaccine Name",
-                accessor: "Vaccine_Name",
+                accessor: "vaccineName",
                 type: "text"
               },
               {
                 Header: "Date",
-                accessor: "Date",
+                accessor: "eventDate",
                 type: "text"
               },
               {
                 Header: "Place",
-                accessor: "Place",
+                accessor: "eventPlace",
                 type: "text"
               },
               {
                 Header: "Booked Slots",
-                accessor: "Booked_Slots",
+                accessor: "bookedSlots",
                 type: "text"
               },
         ],
@@ -75,7 +95,7 @@ const Dashboard = () => {
         </Row>
     <Row>
           <Col ><TableContainer columns={columnsVaccine} data={studentVaccine}/></Col>
-          <Col ><UpcomingDriveComponent columns={columnsDrive} data={filterDrive}/></Col>
+          <Col ><UpcomingDriveComponent columns={columnsDrive} data={items}/></Col>
         </Row>
     </Container>);
 };

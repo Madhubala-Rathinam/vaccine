@@ -1,14 +1,32 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from "react";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { Container, Button } from "reactstrap";
 import TableContainer from "../components/TableContainer"
 import eventBus from '../components/eventBus';
 const vaccineDrive = require("../api/vaccineDrive.json")
 
 const BookVaccineDrive = () => {
-  
 
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8082/vaccineDrive/?format=json")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+  }, [])
   class BookSlots extends React.Component {
     constructor(props) {
       super(props);
@@ -163,39 +181,39 @@ return (
         () => [
           {
             Header: "Event_Id",
-            accessor: "Event_Id",
+            accessor: "eventId",
             type: "button"
           },
           {
             Header: "Event Name",
-            accessor: "Event_Name",
+            accessor: "eventName",
             type: "text"
           },
           {
             Header: "Vaccine Name",
-            accessor: "Vaccine_Name",
+            accessor: "vaccineName",
             type: "text"
           },
           {
             Header: "Date",
-            accessor: "Date",
+            accessor: "eventDate",
             type: "text"
           },
           {
             Header: "Place",
-            accessor: "Place",
+            accessor: "eventPlace",
             type: "text"
           },
           {
             Header: "Max Slots",
-            accessor: "Max_Slots",
+            accessor: "maxSlots",
             type: "text"
           },
           {
             Header: "Booked Slots",
             type: "text",
             Cell: ({ cell }) => {
-                let value = cell.row.original.Booked_Slots;
+                let value = cell.row.original.bookedSlots;
       
                 return (
                   <BookSlots value={value} cell={cell} textBoxId={"Booked_Slots"+cell.row.id}/>
@@ -219,7 +237,7 @@ return (
     return (
 
         <Container style={{ marginTop: 100 }}>
-          <TableContainer columns={columns} data={vaccineDrive} />
+          <TableContainer columns={columns} data={items} />
         </Container>
       )
 };

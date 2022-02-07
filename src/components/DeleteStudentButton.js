@@ -15,6 +15,18 @@ export default class DeleteStudentButton extends React.Component {
     }
 
     onClickListener() {
+      fetch("http://127.0.0.1:8082/deleteStudent/"+this.props.cell.row.original.studentId+"/", {
+        method: 'DELETE'
+      })
+        .then(res => res.json())
+        .then(
+          (result) => {
+            eventBus.dispatch('addStudent', result);
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
         eventBus.dispatch('deleteStudent',this.props.cell.row.id);
       }
 }
