@@ -55,7 +55,7 @@ const BookVaccineDrive = () => {
       
     }
     componentDidMount() {
-      if(Date.parse(this.props.cell.row.original.Date) < Date.now()){
+      if(Date.parse(this.props.cell.row.original.eventDate) < Date.now()){
         this.setState({
           status: 'disabled'
         });
@@ -108,15 +108,27 @@ return (
         let cellData = this.props.cell.row.original;
 
         var addPayload = {
-          "Event_Id": cellData.Event_Id,
-          "Event_Name": cellData.Event_Name,
-          "Vaccine_Name": cellData.Vaccine_Name,
-          "Date": cellData.Date,
-          "Place": cellData.Place,
           "bookedSlots": document.getElementById('bookedSlots'+this.props.cell.row.id).value
         };
 
-        eventBus.dispatch("updateDrive",addPayload);
+        fetch("http://127.0.0.1:8082/updateDrive/"+cellData.eventId+"/", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(
+        addPayload
+      ),
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          eventBus.dispatch("updateDrive",addPayload);
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
 
     }
 
@@ -128,7 +140,7 @@ return (
         });
       }
       
-      if(Date.parse(this.props.cell.row.original.Date) < Date.now()){
+      if(Date.parse(this.props.cell.row.original.eventDate) < Date.now()){
         this.setState({
           status: 'disabled'
         });
@@ -180,7 +192,7 @@ return (
     const columns = useMemo(
         () => [
           {
-            Header: "Event_Id",
+            Header: "Event Id",
             accessor: "eventId",
             type: "button"
           },
