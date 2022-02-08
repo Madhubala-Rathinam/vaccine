@@ -41,7 +41,7 @@ const BookVaccineDrive = () => {
       
       var regextest = regex.test(bookedSlot);
 
-      var bookedCount = bookedSlot <= this.props.cell.row.original.Max_Slots
+      var bookedCount = bookedSlot <= this.props.cell.row.original.maxSlots
 
       var buttonState=''
 
@@ -113,7 +113,7 @@ return (
           "Vaccine_Name": cellData.Vaccine_Name,
           "Date": cellData.Date,
           "Place": cellData.Place,
-          "Booked_Slots": document.getElementById('Booked_Slots'+this.props.cell.row.id).value
+          "bookedSlots": document.getElementById('bookedSlots'+this.props.cell.row.id).value
         };
 
         eventBus.dispatch("updateDrive",addPayload);
@@ -122,7 +122,7 @@ return (
 
     componentDidMount() {
       this._ismounted = true;
-      if(this.props.cell.row.original.Booked_Slots) {
+      if(this.props.cell.row.original.bookedSlots) {
         this.setState({
           status: 'booked'
         });
@@ -216,7 +216,7 @@ return (
                 let value = cell.row.original.bookedSlots;
       
                 return (
-                  <BookSlots value={value} cell={cell} textBoxId={"Booked_Slots"+cell.row.id}/>
+                  <BookSlots value={value} cell={cell} textBoxId={"bookedSlots"+cell.row.id}/>
                 );
               },
           },
