@@ -32,7 +32,7 @@ const StudentForm = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(
-        studentNew // Use your own property name / key
+        studentNew 
       ),
     })
       .then(res => res.json())
