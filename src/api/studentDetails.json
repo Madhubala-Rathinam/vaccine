@@ -1,33 +1,41 @@
 [{
-        "StudentId": 1,
-        "Name": "Aaaa",
-        "Class": 4,
-        "Contact_Number": 1234,
-        "Gender": "M",
-        "DOB": "2000-01-03"
+        "studentId": 1,
+        "studentName": "a",
+        "studentClass": 1,
+        "studentContact": 1234567890,
+        "studentGender": "F",
+        "studentDOB": "2021-12-13"
     },
     {
-        "StudentId": 2,
-        "Name": "Bbbb",
-        "Class": 5,
-        "Contact_Number": 1234,
-        "Gender": "M",
-        "DOB": "2001-12-05"
+        "studentId": 2,
+        "studentName": "b",
+        "studentClass": 2,
+        "studentContact": 9087654321,
+        "studentGender": "M",
+        "studentDOB": "2020-03-21"
     },
     {
-        "StudentId": 3,
-        "Name": "Cccc",
-        "Class": 6,
-        "Contact_Number": 1234,
-        "Gender": "F",
-        "DOB": "2000-10-25"
+        "studentId": 3,
+        "studentName": "a",
+        "studentClass": 1,
+        "studentContact": 1234567890,
+        "studentGender": "F",
+        "studentDOB": "2021-12-13"
     },
     {
-        "StudentId": 4,
-        "Name": "Dddd",
-        "Class": 7,
-        "Contact_Number": 1234,
-        "Gender": "F",
-        "DOB": "1999-09-13"
+        "studentId": 4,
+        "studentName": "a",
+        "studentClass": 1,
+        "studentContact": 1234567890,
+        "studentGender": "F",
+        "studentDOB": "2021-12-13"
+    },
+    {
+        "studentId": 5,
+        "studentName": "a",
+        "studentClass": 1,
+        "studentContact": 1234567890,
+        "studentGender": "F",
+        "studentDOB": "2021-12-13"
     }
 ]

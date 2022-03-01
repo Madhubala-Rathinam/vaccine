@@ -47,7 +47,6 @@ const TableComponent = ({ columns, data }) => {
 export default class TableContainer extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {columns:this.props.columns, data:this.props.data}
 
     this.deleteRow = this.deleteRow.bind(this);
@@ -70,6 +69,16 @@ export default class TableContainer extends React.Component {
             this.updateRow( data )
             });
 
+    }
+
+    componentDidUpdate(previousProps){
+      if(previousProps.data == this.props.data){
+        return
+      }
+      
+      this.setState({
+        columns:this.state.columns, data:this.props.data
+      });
     }
 
     addEventName(){
